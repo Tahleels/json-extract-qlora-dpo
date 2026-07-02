@@ -1,0 +1,31 @@
+# configs/base.yaml
+seed: 42
+
+model:
+  base_id: "Qwen/Qwen2.5-0.5B-Instruct"
+
+# The JSON contract every part of the pipeline obeys.
+schema:
+  name: "person_record"
+  fields:
+    - {key: "name",       type: "str",  required: true}
+    - {key: "age",        type: "int",  required: true}
+    - {key: "job_title",  type: "str",  required: true}
+    - {key: "company",    type: "str",  required: true}
+    - {key: "city",       type: "str",  required: true}
+    - {key: "email",      type: "str",  required: true}
+
+data:
+  n_samples: 4000        # total generated (text, json) pairs
+  splits: {train: 0.85, val: 0.05, test: 0.10}
+  sft_out_dir: "data"
+  dpo_out_dir: "data"
+  samples_dir: "data/samples"
+
+system_prompt: >
+  You are an information extraction engine. Extract the requested fields from the
+  user's text and respond with a SINGLE minified JSON object only. No markdown, no
+  code fences, no explanation. If a field is missing, use null.
+
+hub:
+  dataset_repo: "your-username/json-extract-v1"   # change to your HF username

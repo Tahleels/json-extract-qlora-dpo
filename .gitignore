@@ -1,0 +1,30 @@
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Large artifacts & models
+artifacts/
+*.gguf
+
+# Big generated datasets (host these on Hugging Face instead)
+data/*.jsonl
+!data/samples/
+!data/samples/*.jsonl
+
+# Python cache & build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+src.egg-info/
+build/
+dist/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
