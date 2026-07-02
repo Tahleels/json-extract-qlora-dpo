@@ -74,6 +74,7 @@ def main():
         eval_dataset=val_ds,
         peft_config=peft_config,
         dataset_text_field="text",
+        max_seq_length=sft_cfg["training"]["max_seq_length"],
         args=SFTConfig(
             output_dir=sft_cfg["training"]["output_dir"],
             num_train_epochs=sft_cfg["training"]["epochs"],
@@ -85,7 +86,6 @@ def main():
             eval_steps=50,
             save_strategy="epoch",
             fp16=True,
-            max_seq_length=sft_cfg["training"]["max_seq_length"],
             report_to="none",
         ),
     )
