@@ -1,3 +1,15 @@
+---
+license: apache-2.0
+base_model: Qwen/Qwen2.5-0.5B-Instruct
+tags:
+- text-generation-inference
+- lora
+- dpo
+- gguf
+- json
+pipeline_tag: text-generation
+---
+
 # JSON Extraction LLM — QLoRA SFT + DPO
 
 > Fine-tuned **Qwen2.5-0.5B-Instruct** for reliable structured JSON extraction using **QLoRA + DPO** on a free Colab T4 GPU. Quantized to **GGUF Q4_K_M** — runs locally on any CPU laptop.

@@ -17,7 +17,7 @@ REPO_ID     = f"{HF_USERNAME}/{REPO_NAME}"
 def main():
     token = os.environ.get("HF_TOKEN")
     if not token:
-        print("❌ Set HF_TOKEN environment variable first:")
+        print("[ERROR] Set HF_TOKEN environment variable first:")
         print("   $env:HF_TOKEN = 'hf_...'")
         sys.exit(1)
 
@@ -27,7 +27,7 @@ def main():
     print(f"Creating repo: {REPO_ID}")
     try:
         create_repo(REPO_ID, repo_type="model", token=token, exist_ok=True)
-        print(f"✅ Repo ready: https://huggingface.co/{REPO_ID}")
+        print(f"[SUCCESS] Repo ready: https://huggingface.co/{REPO_ID}")
     except Exception as e:
         print(f"Repo already exists or error: {e}")
 
@@ -43,9 +43,9 @@ def main():
             repo_id=REPO_ID,
             token=token,
         )
-        print(f"✅ GGUF uploaded!")
+        print(f"[SUCCESS] GGUF uploaded!")
     else:
-        print("⚠️  No GGUF file found in artifacts/ — skipping GGUF upload")
+        print("[WARNING] No GGUF file found in artifacts/ -- skipping GGUF upload")
 
     # Upload model card
     card_path = Path("README.md")
@@ -56,9 +56,9 @@ def main():
             repo_id=REPO_ID,
             token=token,
         )
-        print("✅ Model card (README.md) uploaded!")
+        print("[SUCCESS] Model card (README.md) uploaded!")
 
-    print(f"\n🎉 Done! View your model at:")
+    print(f"\nDone! View your model at:")
     print(f"   https://huggingface.co/{REPO_ID}")
 
 if __name__ == "__main__":
