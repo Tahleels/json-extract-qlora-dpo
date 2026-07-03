@@ -1,5 +1,4 @@
---prefer-binary
---only-binary llama-cpp-python
+--extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+llama-cpp-python
 gradio
 huggingface_hub
-llama-cpp-python
