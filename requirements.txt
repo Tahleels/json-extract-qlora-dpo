@@ -1,0 +1,5 @@
+--prefer-binary
+--only-binary llama-cpp-python
+gradio
+huggingface_hub
+llama-cpp-python
