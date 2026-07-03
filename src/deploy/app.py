@@ -36,19 +36,14 @@ EXAMPLES = [
 
 # ── Load model (once, at startup) ─────────────────────────────────────────────
 print("Downloading GGUF model...")
-if not Path(LOCAL_PATH).exists():
-    hf_hub_download(
-        repo_id=HF_REPO_ID,
-        filename=GGUF_FILE,
-        local_dir="/tmp",
-        local_dir_use_symlinks=False,
-    )
-    import shutil
-    shutil.move(f"/tmp/{GGUF_FILE.split('/')[-1]}", LOCAL_PATH)
+model_path = hf_hub_download(
+    repo_id=HF_REPO_ID,
+    filename=GGUF_FILE,
+)
 
 print("Loading model into llama.cpp...")
 llm = Llama(
-    model_path=LOCAL_PATH,
+    model_path=model_path,
     n_ctx=512,
     n_threads=int(os.environ.get("LLAMA_THREADS", "2")),
     verbose=False,
